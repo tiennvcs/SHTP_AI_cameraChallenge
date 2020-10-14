@@ -1,1 +1,1 @@
-# SHTP_AI_cameraChallenge
+# SHTP AI CAMERA INSPECTION
