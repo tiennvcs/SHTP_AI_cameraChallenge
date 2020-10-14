@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import imageio
 
-path = "/home/thuyentd/2019-2020/AI_Camera_Inspection/Data/1/data1_182.jpg"
+path = "/home/thuyentd/2019-2020/SHTP_AI_cameraChallenge/Data/1/data1_1.jpg"
 img = cv2.imread(path)
 
 img_grey = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -24,7 +24,7 @@ for upBound in range(200,255,20):
         img = cv2.imread('./plot/Image_upbound_{}_lowerbound_{}.png'.format(upBound,lowBound))
         images.append(img)
 
-imageio.mimsave("/home/thuyentd/2019-2020/AI_Camera_Inspection/movie.gif", images,duration = 1)
+imageio.mimsave("/home/thuyentd/2019-2020/SHTP_AI_cameraChallenge/output/img_black_white.gif", images,duration = 1)
 
 # cv2.imwrite("test.jpg",blackAndWhiteImage)
 # cv2.imwrite("test_.jpg",blackAndWhiteImage_)
