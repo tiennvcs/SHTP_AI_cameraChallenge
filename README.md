@@ -1,0 +1,1 @@
+# SHTP_AI_cameraChallenge
