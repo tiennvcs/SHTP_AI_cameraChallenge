@@ -14,3 +14,6 @@ boundaries = [
 	([25, 146, 190], [62, 174, 250]),
 	([103, 86, 65], [145, 133, 128])
 ]
+
+METHODS = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR',
+            'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
