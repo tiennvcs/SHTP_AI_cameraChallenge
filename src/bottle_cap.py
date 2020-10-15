@@ -2,30 +2,88 @@ import cv2
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import imageio
-
-path = "/home/thuyentd/2019-2020/SHTP_AI_cameraChallenge/Data/1/data1_1.jpg"
-img = cv2.imread(path)
-
-img_grey = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+import os
+import numpy as np
+import argparse
 
 
-# (thresh, blackAndWhiteImage) = cv2.threshold(img_grey, 127, 255, cv2.THRESH_BINARY)
-# (thresh, blackAndWhiteImage_) = cv2.threshold(img_grey, 100, 240, cv2.THRESH_BINARY)
-# (thresh, blackAndWhiteImage_2) = cv2.threshold(img_grey, 100, 200, cv2.THRESH_BINARY)
+def process_image(img: np.ndarray, output:str, lower, upper):
 
-images = []
-for upBound in range(200,255,20):
-    for lowBound in range(100,140,10):
-        plt.clf()
-        (thresh, blackAndWhiteImage) = cv2.threshold(img_grey, upBound, lowBound, cv2.THRESH_BINARY)
-        imgplot = plt.imshow(blackAndWhiteImage,cmap='Greys')
-        plt.title('Image upbound {} lowerbound {}.png'.format(upBound,lowBound))
-        plt.savefig('./plot/Image_upbound_{}_lowerbound_{}.png'.format(upBound,lowBound))
-        img = cv2.imread('./plot/Image_upbound_{}_lowerbound_{}.png'.format(upBound,lowBound))
-        images.append(img)
 
-imageio.mimsave("/home/thuyentd/2019-2020/SHTP_AI_cameraChallenge/output/img_black_white.gif", images,duration = 1)
+	img_grey = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
-# cv2.imwrite("test.jpg",blackAndWhiteImage)
-# cv2.imwrite("test_.jpg",blackAndWhiteImage_)
-# cv2.imwrite("test_2.jpg",blackAndWhiteImage_2)
+	images = []
+
+	for upBound in range(upper,255,20):
+
+	    for lowBound in range(lower,140,10):
+
+	        plt.clf()
+	        
+	        (thresh, blackAndWhiteImage) = cv2.threshold(img_grey, upBound, lowBound, cv2.THRESH_BINARY)
+	        
+	        imgplot = plt.imshow(blackAndWhiteImage, cmap='Greys')
+	        
+	        plt.title('Image upbound {} lowerbound {}.png'.format(upBound,lowBound))
+	       	        
+	        file_save = os.path.join(output, 'Image_upbound_{}_lowerbound_{}.png'.format(upBound, lowBound))
+	       
+	        plt.savefig(file_save)
+
+	        img = cv2.imread(file_save)
+
+	        images.append(img)
+
+	return images
+
+
+
+def simple_process(img, output, lower, upper):
+	img_grey = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+	
+	plt.clf()
+	
+	(thresh, blackAndWhiteImage) = cv2.threshold(img_grey, upper, lower, cv2.THRESH_BINARY)
+
+	imgplot = plt.imshow(blackAndWhiteImage, cmap='Greys')
+
+
+	plt.title('Image upbound {} lowerbound {}.png'.format(upper,lower))
+	        
+	file_save = os.path.join(output, 'Image_upbound_{}_lowerbound_{}.png'.format(upper, lower))
+
+	plt.savefig(file_save)
+
+
+def main(args):
+
+	# Check the path file
+	if not os.path.exists(args['path_image']):
+		print("The invalid path")
+		exit(0)
+	
+	# Read image by path
+	img = cv2.imread(args['path_image'])
+	
+	# Create output directory
+	output_directory = os.path.join("../output", os.path.split(args['path_image'])[1].split(".")[0])
+	if not os.path.exists(output_directory):
+		os.mkdir(output_directory)
+
+
+	images = simple_process(img, output=output_directory, lower=args['lower_bound'], upper=args['upper_bound'])
+
+
+	# Create gif from images
+	# imageio.mimsave(os.path.join(output_directory, 'animation.gif'), images, duration=1)
+
+
+
+if __name__ == '__main__':
+
+	parser = argparse.ArgumentParser(description='Process image')
+	parser.add_argument('--path_image', type=str, required=True, help='The path of image need process')
+	parser.add_argument('--lower_bound', '-lower', type=int, required=True, help='The lower bound')
+	parser.add_argument('--upper_bound', '-upper', type=int, required=True, help='The upper bound')
+
+	main(vars(parser.parse_args()))
