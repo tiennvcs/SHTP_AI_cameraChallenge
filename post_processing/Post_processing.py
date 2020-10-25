@@ -32,8 +32,7 @@ def Check_Good(rawImage):
  
   medianFiltered = cv2.medianBlur(thresholded,5)
 
-  kernel = np.one
-  s((7,7),np.uint8)
+  kernel = np.ones((7,7),np.uint8)
 
   # Open annd closing 
   medianFiltered = cv2.morphologyEx(medianFiltered, cv2.MORPH_OPEN, kernel)
