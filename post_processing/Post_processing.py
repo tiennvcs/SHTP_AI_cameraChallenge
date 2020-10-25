@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def Check_Number_Contour(cnts,threshold):
+def check_number_contour(cnts,threshold):
   '''
   + Input: list contours
   '''
@@ -13,7 +13,7 @@ def Check_Number_Contour(cnts,threshold):
     return True
   return False
 
-def Check_Good(rawImage):
+def check_good(rawImage):
 
   """
   This function allow you to check whether bottle cap is close or open.  
@@ -42,7 +42,7 @@ def Check_Good(rawImage):
   cnts, _= cv2.findContours(medianFiltered, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
   
-  result = Check_Number_Contour(cnts,40)
+  result = check_number_contour(cnts,40)
   return result, cnts
   #
 

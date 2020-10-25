@@ -13,7 +13,7 @@ img = cv2.imread(path,cv2.IMREAD_COLOR)
 # cv2.imshow("Origin Image: ",img)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
-result, cnts = Post_processing.Check_Good(img)
+result, cnts = Post_processing.check_good(img)
 
 end = time.time()
 print("Result: ", result)
