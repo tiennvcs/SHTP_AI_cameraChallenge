@@ -1,19 +1,19 @@
 import cv2
 import numpy as np
 
-def Check_Number_Contour(cnts,threshold):
+def check_number_contour(cnts,threshold):
   '''
   + Input: list contours
   '''
   if len(cnts) >=2:
     return False
-  y_max,y_min = np.max(cnts[0][:,0][:,1]),np.min(cnts[0][:,0][:,1])
+  y_max,y_min = np.max(cnts[0][:,0][:,1]), np.min(cnts[0][:,0][:,1])
   d = y_max - y_min
   if d >= threshold:
     return True
   return False
 
-def Check_Good(rawImage):
+def check_good(rawImage):
 
   """
   This function allow you to check whether bottle cap is close or open.  
@@ -24,7 +24,6 @@ def Check_Good(rawImage):
   """
   # Convert BGR to HSV
   hsv = cv2.cvtColor(rawImage, cv2.COLOR_BGR2HSV)
-
 
   hue ,saturation ,value = cv2.split(hsv)
 
@@ -42,7 +41,7 @@ def Check_Good(rawImage):
   cnts, _= cv2.findContours(medianFiltered, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
   
-  result = Check_Number_Contour(cnts,40)
+  result = check_number_contour(cnts,40)
   return result, cnts
   #
 

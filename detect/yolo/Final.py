@@ -1,5 +1,4 @@
 import cv2
-# from google.colab.patches import cv2_imshow
 import numpy as np
 import os
 import argparse
@@ -8,28 +7,16 @@ import datetime
 from yolo_detect import detect_image
 from google.colab.patches import cv2_imshow
 
-# from google.colab.patches import cv2_imshow
 
 def Check_Good(img):
-  #path = "/content/drive/My Drive/AI Camera Inspection/SHTP_AI_cameraChallenge/image_test/SNB-6004_20201014114026 (1).jpeg"
-  # rawImage = cv2.imread(path,cv2.IMREAD_COLOR)
-#   print(img.shape)
+  
   rawImage = img
-  # print("raw image")
-  # cv2_imshow(rawImage) 
 
-  hsv = cv2.cvtColor(rawImage, cv2.COLOR_BGR2HSV)
-  # print("hsv image")
-  # cv2_imshow(hsv)
+  hsv = cv2.cvtColor(rawImage, cv2.COLOR_BGR2HS)
 
   hue ,saturation ,value = cv2.split(hsv)
-  # print("saturation image")
-  # cv2_imshow(saturation)
-
 
   retval, thresholded = cv2.threshold(saturation, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-  # print("'Thresholded Image")
-  # cv2_imshow(thresholded)
 
   medianFiltered = cv2.medianBlur(thresholded,5)
 
@@ -37,8 +24,6 @@ def Check_Good(img):
 
   medianFiltered = cv2.morphologyEx(medianFiltered, cv2.MORPH_OPEN, kernel)
   medianFiltered = cv2.morphologyEx(medianFiltered, cv2.MORPH_CLOSE, kernel)
-  # print('Median Filtered Image')
-  # cv2_imshow(medianFiltered)
 
   cnts, hierarchy = cv2.findContours(medianFiltered, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
   # print("___Numbers contours: ", len(cnts) )

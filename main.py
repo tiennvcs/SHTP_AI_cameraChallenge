@@ -7,7 +7,7 @@
 import argparse
 import cv2
 from detect.yolo.yolo_detect import detect_image
-from post_processing.FileCuarTri import check_good
+from post_processing. import check_good
 
 
 def main(args):
@@ -30,6 +30,7 @@ def main(args):
 
 	# Display result 
 	print(result)
+
 
 
 if __name__ == '__main__':

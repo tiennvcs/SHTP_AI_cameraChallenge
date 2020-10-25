@@ -6,8 +6,8 @@ import imutils
 import time
 # from Final import Check_Good
 
-cfg = '/content/gdrive/My Drive/AI_Inspection/yolo/Quang_YoloV3_Detect_Bottle.cfg'
-net = cv2.dnn.readNet("/content/gdrive/My Drive/AI_Inspection/yolo/backup/Quang_YoloV3_Detect_Bottle_last.weights", cfg)
+cfg = './Quang_YoloV3_Detect_Bottle.cfg'
+net = cv2.dnn.readNet("./backup/Quang_YoloV3_Detect_Bottle_last.weights", cfg)
 output_path = os.path.join("result", "out_img.jpg")
 # Name custom object
 classesFile = "obj.names";
