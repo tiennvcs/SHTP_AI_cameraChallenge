@@ -61,6 +61,7 @@ def Check_Good(img):
   result = check_number_contour(cnts,40,second.copy())
   return result
 
+
 def check_number_contour(cnts,threshold,img):
   if len(cnts) >=2:
     return False
@@ -73,13 +74,16 @@ def check_number_contour(cnts,threshold,img):
     return True
   return False
 
+
 def Show_Result(Text, image):
 
   image = cv2.putText(image, Text, (100, 100) , cv2.FONT_HERSHEY_SIMPLEX ,  
                     1,(255, 0, 0), 2, cv2.LINE_AA) 
   cv2.imshow("result",image)
 
+
 def main(args):
+  
   start_time = datetime.datetime.now()
   # Đọc file
   Text = ""
