@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-detect/tensorflow-yolov4-tflite/
+detect/backup/
 __pycache__/
 *.py[cod]
 *$py.class

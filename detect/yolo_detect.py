@@ -6,11 +6,12 @@ import imutils
 import time
 # from Final import Check_Good
 
-cfg = '/content/gdrive/My Drive/AI_Inspection/yolo/Quang_YoloV3_Detect_Bottle.cfg'
-net = cv2.dnn.readNet("/content/gdrive/My Drive/AI_Inspection/yolo/backup/Quang_YoloV3_Detect_Bottle_last.weights", cfg)
+cfg = 'detect/Quang_YoloV3_Detect_Bottle.cfg'
+net = cv2.dnn.readNet("detect/backup/Quang_YoloV3_Detect_Bottle_last.weights", cfg)
+
 output_path = os.path.join("result", "out_img.jpg")
 # Name custom object
-classesFile = "obj.names";
+classesFile = "detect/obj.names";
 if not os.path.exists("result"):
     os.mkdir("result")
 classes = None
@@ -65,18 +66,11 @@ def detect_image(img):
               # print(Check_Good(crop_frame))
               # cv2.imwrite("crop_frame.jpg",crop_frame)
               return crop_frame
-            
-
-    # output_image = img[y:(y+h), x:(x+w), :]
-    
+                
     # Store image
     cv2.imwrite(output_path, img)   
     print(output_path)
     return img
-
-# img_path = "/content/gdrive/My Drive/AI_Inspection/yolo/images/002.jpeg"
-# img = cv2.imread(img_path)
-# crop_image = detect_image(img)
 
 
 def detect_video(video_path):

@@ -24,7 +24,7 @@ def check_number_contour(cnts:list, threshold: int):
   return False
 
 
-def check_good(rawImage, threshold: int, show=True):
+def check_good(rawImage, threshold, show=True):
 
   """
   This function allow you to check whether bottle cap is close or open.  
