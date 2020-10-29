@@ -9,11 +9,16 @@ import cv2
 from detect.yolo_detect import detect_image 
 from post_processing.post_processing import check_good
 import numpy as np
+from config import SIZE_DISPLAY
 
-
-def show_result(image: np.ndarray, isGood: bool):
+def show_result(image: np.ndarray, isGood: bool, show=True):
 	
-	cv2.imshow('Predict image', image)
+	try:
+		image = cv2.resize(image, dsize=SIZE_DISPLAY, interpolation=cv2.INTER_AREA)
+	except:
+		print("CAN'T RESIZE !")
+		exit(0)
+
 	if isGood:
 		text = "OKE"
 	else:
@@ -21,11 +26,11 @@ def show_result(image: np.ndarray, isGood: bool):
 
 	cv2.putText(image, text, org=(100, 100),fontFace=1, fontScale=1,color=(255, 0, 0), thickness=2)
 
-	cv2.imshow('Result', image)
-
-	cv2.waitKey(0)
+	if show:
+		cv2.imshow('Result', image)
+		cv2.waitKey(0)
 	
-	return 
+	return image
 
 def main(args):
 	
@@ -36,14 +41,15 @@ def main(args):
 		print("INVALID PATH !")
 		exit(0)
 
+	copied_image = image.copy()
 	# Runing detection stage
-	roi_image = detect_image(image)
+	roi_image = detect_image(copied_image)
 
 	# Running post processing
-	result, contours = check_good(roi_image, args['threshold'])
+	result, contours = check_good(roi_image, args['threshold'], show=False)
 
 	# Display result 
-	show_result(image=image, isGood=result)
+	show_result(image=image, isGood=result, show=True)
 
 
 

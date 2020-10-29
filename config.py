@@ -3,6 +3,8 @@ SIZE_WINDOW_GUI = {
 	'HEIGHT': 500,
 }
 
+SIZE_DISPLAY = (800, 700)
+
 
 FONT = 'Arial Bold'
 

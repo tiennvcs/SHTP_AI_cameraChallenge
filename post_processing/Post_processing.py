@@ -13,10 +13,11 @@ def check_number_contour(cnts:list, threshold: int):
   '''
   + Input: list contours
   '''
-  if len(cnts) >=2:
+  if len(cnts) >=2 or len(cnts) == 0:
     return False
 
   y_max, y_min = np.max(cnts[0][:,0][:,1]), np.min(cnts[0][:,0][:,1])
+
   distance = y_max - y_min
   if distance >= threshold:
     return True
@@ -55,6 +56,7 @@ def check_good(rawImage, threshold, show=True):
   # Take contours
   contours, _= cv2.findContours(medianFiltered, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
+  #if len(contours) == 1:
   result = check_number_contour(contours, threshold)
   
   return result, contours
