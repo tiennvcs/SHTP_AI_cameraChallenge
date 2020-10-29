@@ -25,7 +25,28 @@ def check_number_contour(cnts:list, threshold: int):
   return False
 
 
-def check_good(rawImage, threshold, show=True):
+def show_result(image: np.ndarray, isGood: bool, show=True):
+	try:
+		image = cv2.resize(image, dsize=(800, 600), interpolation=cv2.INTER_AREA)
+	except:
+		print("CAN'T RESIZE !")
+		exit(0)
+
+	if isGood:
+		text = "OKE"
+	else:
+		text = "NOT GOOD"
+
+	cv2.putText(image, text, org=(100, 100),fontFace=1, fontScale=1,color=(255, 0, 0), thickness=2)
+
+	if show:
+		cv2.imshow('Result', image)
+		cv2.waitKey(0)
+	
+	return image
+
+
+def check_good(rawImage, threshold=40, show=True):
 
   """
   This function allow you to check whether bottle cap is close or open.  

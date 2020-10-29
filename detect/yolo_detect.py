@@ -22,7 +22,7 @@ layer_names = net.getLayerNames()
 output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
-def detect_image(img):
+def detect_image(img, save=False):
 
     height, width, channels = img.shape
     blob = cv2.dnn.blobFromImage(img, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
@@ -68,8 +68,10 @@ def detect_image(img):
               return crop_frame
                 
     # Store image
-    cv2.imwrite(output_path, img)   
-    print(output_path)
+    if save:
+        cv2.imwrite(output_path, img)   
+        print(output_path)
+    
     return img
 
 

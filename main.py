@@ -7,30 +7,12 @@
 import argparse
 import cv2
 from detect.yolo_detect import detect_image 
-from post_processing.post_processing import check_good
+from post_processing.post_processing import check_good, show_result
 import numpy as np
 from config import SIZE_DISPLAY
+import os
 
-def show_result(image: np.ndarray, isGood: bool, show=True):
-	
-	try:
-		image = cv2.resize(image, dsize=SIZE_DISPLAY, interpolation=cv2.INTER_AREA)
-	except:
-		print("CAN'T RESIZE !")
-		exit(0)
 
-	if isGood:
-		text = "OKE"
-	else:
-		text = "NOT GOOD"
-
-	cv2.putText(image, text, org=(100, 100),fontFace=1, fontScale=1,color=(255, 0, 0), thickness=2)
-
-	if show:
-		cv2.imshow('Result', image)
-		cv2.waitKey(0)
-	
-	return image
 
 def main(args):
 	
@@ -51,6 +33,12 @@ def main(args):
 	# Display result 
 	show_result(image=image, isGood=result, show=True)
 
+	# Save image
+	if args['save']:
+		saving_path = os.path.join('output/', os.path.split(args['image_path'])[1])
+		print(saving_path)
+		input()
+
 
 
 if __name__ == '__main__':
@@ -59,5 +47,6 @@ if __name__ == '__main__':
 	                    help='The path of image.')
 	parser.add_argument('--threshold', type=int, default=40,
 	                    help='The path of image.')
+	parser.add_argument('--save', type=int, choices=[0, 1], help='Save image or not')
 	args = vars(parser.parse_args())
 	main(args)

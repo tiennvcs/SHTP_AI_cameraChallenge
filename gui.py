@@ -5,6 +5,8 @@
 		- Require Information
 
 """
+
+
 import tkinter as tk
 from config import SIZE_WINDOW_GUI, TEXTS, TEXT_POSITIONS, FONT
 from PIL import Image, ImageTk
