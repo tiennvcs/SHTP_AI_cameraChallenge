@@ -90,7 +90,7 @@ def update_frame():
 
             # ret, ori_img = cap.read()
             # Detect 
-            ori_img = cv2.imread("./Test.jpeg")
+            ori_img = cv2.imread("./test/002.jpeg")
             copied_image = ori_img.copy()
 
             roi_image = detect_image(copied_image)

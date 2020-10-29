@@ -1,0 +1,7 @@
+certifi==2020.6.20
+numpy==1.19.0
+opencv-python==4.3.0.36
+Pillow==8.0.1
+python-snap7==0.11
+scipy==1.4.1
+wincertstore==0.2
