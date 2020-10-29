@@ -6,7 +6,7 @@
 
 import argparse
 import cv2
-from detect.yolo.yolo_detect import detect_image
+from detect.tensorflow-yolov4-tflite import preprocess_image, model_output 
 from post_processing. import check_good
 
 
@@ -15,6 +15,7 @@ def main(args):
 	# Load image into program
 	try:
 		image = cv2.imread(args['path'])
+		img_datas_stack, img = preprocess_image(img=image)
 	except:
 		print("INVALID PATHT !")
 		exit(0)
@@ -22,8 +23,12 @@ def main(args):
 	cv2.imshow('The origin image', image)
 	cv2.waitKey(0)
 
+
+	# Create model 
+	model = model(img_datas_stack)
+
 	# Runing detection stage
-	detected_image = detect_image(image)
+	detected_image = model_output(img)
 
 	# Running post processing
 	result, contours = check_good(detected_image)

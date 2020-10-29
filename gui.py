@@ -10,6 +10,7 @@ from config import SIZE_WINDOW_GUI, TEXTS, TEXT_POSITIONS, FONT
 from PIL import Image, ImageTk
 import cv2
  
+ 
 class MainWindow():
     def __init__(self, window, cap):
         self.window = window
