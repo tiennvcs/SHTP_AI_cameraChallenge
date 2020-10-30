@@ -11,7 +11,7 @@ import tkinter.font as font
 import tkinter
 from datetime import datetime
 import sys, os
-
+import random
 import snap7
 import cv2
 import PIL.Image, PIL.ImageTk
@@ -19,8 +19,6 @@ from detect.yolo_detect import detect_image
 from post_processing.post_processing import check_good, show_result
 from config import DB_NUMBER, START_ADDRESS, WINDOW_HEIGHT, WINDOW_WIDTH, X_POSITION, CAPTURE_VIDEO_URL, SIZE, FONT_FACE, FONT_SCALE, COLOR, THICKNESS, CAMERA_IP_ADDRESS,\
                     IMAGE_HEIGHT, IMAGE_WIDTH
-from utils import next_image, simulation
-
 
 # Global variables
 number_of_good_bottles = 0
@@ -29,7 +27,21 @@ number_of_bottles = 0
 denta = 30
 
 
+
+
 log_file = os.path.join('logs', datetime.now().strftime("%Y_%m_%d_%Hh_%Mm_%Ss")+'.txt')
+
+
+def next_image():
+    global Cont
+    Cont = 1
+
+
+def simulation():
+    a = random.randrange(100)
+    if a == 2:
+        return True
+    return False
 
 
 def draw_info(img, captered_time, save, check):
@@ -128,12 +140,11 @@ def update_frame(test=True):
             Cont = 0
         else:
             photo = None
-            button.forget()
             button.pack_forget()
             status.pack()
 
 
-    canvas.create_image(0,0, image=photo, anchor=tkinter.NW)
+    canvas.create_image(0, 0, image=photo, anchor=tkinter.NW)
     window.after(15, update_frame)
 
 
@@ -165,6 +176,7 @@ canvas.pack()
 Cont = 1
 
 button = Button(window, text="CONTINUE", command=next_image)
+button.pack()
 button.place(relx=0.5, rely=0.5, anchor=S)
 
 status = Label(window, text="WAITING SIGNAL FROM SENSOR", font=("Arial", 20))

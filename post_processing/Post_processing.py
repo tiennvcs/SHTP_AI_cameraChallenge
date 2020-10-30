@@ -29,11 +29,13 @@ def show_result(image: np.ndarray, isGood: bool, show=True):
 
 	if isGood:
 		text = "OKE"
+		color = (0, 255, 0)
 	else:
 		text = "NOT GOOD"
+		color = (0, 0, 255)
   
 	if show:
-		cv2.putText(image, text, org=(100, 100),fontFace=1, fontScale=2,color=(255, 0, 0), thickness=2)
+		cv2.putText(image, text, org=(100, 100),fontFace=1, fontScale=2,color=color, thickness=2)
 		cv2.imshow('Result', image)
 		cv2.waitKey(0)
 	

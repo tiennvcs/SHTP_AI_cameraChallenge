@@ -34,7 +34,7 @@ def main(args):
 
 	# Save image
 	if args['save']:
-		saving_path = os.path.join('test_output/', 'test'+os.path.split(args['image_path'])[1])
+		saving_path = os.path.join('test_output/', 'test_' + os.path.split(args['image_path'])[1])
 		cv2.imwrite(saving_path, result_image)
 
 
