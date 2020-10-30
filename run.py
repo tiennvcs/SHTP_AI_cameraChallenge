@@ -1,3 +1,10 @@
+# Usage:
+"""
+    python run.py test
+            or 
+    python run.py device
+"""
+
 from tkinter import *
 from tkinter.ttk import *
 import tkinter.font as font

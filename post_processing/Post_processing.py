@@ -98,8 +98,7 @@ def main(args):
   else:
     print("NOT GOOD")
 
-  cv2.waitKey(0)
-
+  cv2.release()
   cv2.destroyAllWindows()
 
 
