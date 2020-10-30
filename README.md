@@ -4,8 +4,9 @@
 
 <img src="test_output/test_OKE.jpeg" alt="OKE BOTTLE" style="width:30%;height:30%;" align="middle" >
 
-<img src="test_output/test_NOT_GOOD.jpeg" alt="NOT GOOD BOTTLE" style="width:30%;height:30%;" align="middle">
+<img src="test_output/test_NOT_GOOD_1.jpeg" alt="NOT GOOD BOTTLE CASE 1" style="width:30%;height:30%;" align="middle">
 
+<img src="test_output/test_NOT_GOOD_2.jpeg" alt="NOT GOOD BOTTLE CASE 2" style="width:30%;height:30%;" align="middle">
 
 ## The idea of solution
 
