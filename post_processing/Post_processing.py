@@ -10,18 +10,13 @@ import time
 
 
 def check_number_contour(cnts:list, threshold: int):
-  '''
-  + Input: list contours
-  '''
+
   if len(cnts) >=2 or len(cnts) == 0:
     return False
-
   y_max, y_min = np.max(cnts[0][:,0][:,1]), np.min(cnts[0][:,0][:,1])
-
   distance = y_max - y_min
   if distance >= threshold:
     return True
-
   return False
 
 
@@ -36,10 +31,9 @@ def show_result(image: np.ndarray, isGood: bool, show=True):
 		text = "OKE"
 	else:
 		text = "NOT GOOD"
-
-	cv2.putText(image, text, org=(100, 100),fontFace=1, fontScale=1,color=(255, 0, 0), thickness=2)
-
+  
 	if show:
+		cv2.putText(image, text, org=(100, 100),fontFace=1, fontScale=2,color=(255, 0, 0), thickness=2)
 		cv2.imshow('Result', image)
 		cv2.waitKey(0)
 	

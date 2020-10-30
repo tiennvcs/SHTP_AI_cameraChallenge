@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-detect/backup/
+detect/model_weights/
 __pycache__/
 *.py[cod]
 *$py.class

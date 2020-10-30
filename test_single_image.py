@@ -1,7 +1,7 @@
 """
 Usage:
 
-	python test_single_image.py --image_path test_images/002.jpeg --threshold 40 --save 1
+	python main.py --image_path test_images/002.jpeg --threshold 40 --save 1
 """
 
 import argparse
