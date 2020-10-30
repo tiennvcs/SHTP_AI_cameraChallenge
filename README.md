@@ -2,9 +2,9 @@
 
 ## The solving problem: Detect missing bottle caps from stream camera video using industry.
 
-<img src="test_output/test_OKE.jpeg" alt="OKE BOTTLE" style="width:50%;height:50%;" align="middle" >
+<img src="test_output/test_OKE.jpeg" alt="OKE BOTTLE" style="width:30%;height:30%;" align="middle" >
 
-<img src="test_output/test_NOT_GOOD.jpeg" alt="NOT GOOD BOTTLE" style="width:50%;height:50%;" align="middle">
+<img src="test_output/test_NOT_GOOD.jpeg" alt="NOT GOOD BOTTLE" style="width:30%;height:30%;" align="middle">
 
 
 ## The idea of solution
