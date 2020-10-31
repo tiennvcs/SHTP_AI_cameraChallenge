@@ -1,6 +1,6 @@
 # AI Camera Inspection Challenger 2020
 
-## The solving problem: Detect missing bottle caps from stream camera video using industry.
+## The solving problem: Detect missing bottle caps from stream camera video in industry.
 
 <img src="test_output/test_OKE.jpeg" alt="OKE BOTTLE" style="width:30%;height:30%;" align="middle" >
 
@@ -20,7 +20,7 @@
 
 <li> Use the image processing techniques to process the bottle cap image.</li>
 
-<li> Display the result and required information to use.</li>
+<li> Display the result and required information to user.</li>
 
 </ol>
 
