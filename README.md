@@ -45,7 +45,7 @@ Unzip and put it into *detect/model_weights/yolov3_detect_bottle.weights* direct
 ### Test on single image
 ```bash
 
-$python test_single_image --image_path test_images/002.jpeg --threshold 40 --save 1
+$python test_single_image.py --image_path test_images/002.jpeg --threshold 40 --save 1
 
 
 ```
