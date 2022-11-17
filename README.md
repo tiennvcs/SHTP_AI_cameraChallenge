@@ -9,7 +9,7 @@
 <img src="test_output/test_NOT_GOOD_2.jpeg" alt="NOT GOOD BOTTLE CASE 2" style="width:30%;height:30%;" align="middle">
 
 ## The idea of solution
-
+[technique solution](https://www.overleaf.com/read/jccqbhfpctkm)
 <ol>
 
 <li> Receive signals from the sensor</li>
