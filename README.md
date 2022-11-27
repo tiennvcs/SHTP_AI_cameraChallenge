@@ -1,12 +1,9 @@
 # AI Camera Inspection Challenger 2020
 
 ## The solving problem: Detect missing bottle caps from stream camera video in industry.
-
-<img src="test_output/test_OKE.jpeg" alt="OKE BOTTLE" style="width:30%;height:30%;" align="middle" >
-
-<img src="test_output/test_NOT_GOOD_1.jpeg" alt="NOT GOOD BOTTLE CASE 1" style="width:30%;height:30%;" align="middle">
-
-<img src="test_output/test_NOT_GOOD_2.jpeg" alt="NOT GOOD BOTTLE CASE 2" style="width:30%;height:30%;" align="middle">
+Good bottle            |  Failling bottle
+:-------------------------:|:-------------------------:|
+![](test_output/test_OKE.jpeg)  | ![](test_output/test_NOT_GOOD_2.jpeg)|
 
 ## The idea of solution
 <ol>
